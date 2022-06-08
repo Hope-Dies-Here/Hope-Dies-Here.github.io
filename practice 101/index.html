@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+        <div id="all">
+            <div id="top">
+                <h1>BAKA</h1>
+            </div>
+            <div id="mid">
+                <textarea class="input" id="input"></textarea>
+                <select name="languages" id="languages">
+                    <option id="select-lan">Select Language</option>
+                    <option value="English" id="eng">To English</option>
+                    <option value="Bro" id="bro">To Bro</option>
+                </select>
+                <button onclick="translateIt()" id="translate-btn">Translate</button> 
+            </div>
+            <div id="bottom">
+                <h1>Translation</h1>
+                <div class="output" id="output"> 
+                    <p id="txt"></p>
+                </div>
+            </div>
+        </div>
+
+
+    <script src="practice.js"></script>
+</body>
+</html>
