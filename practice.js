@@ -19,10 +19,12 @@ let man = '+ nmd c`x he t sq`mrk`sd sghr sg`s ld`mr h ehmhrgdc sgd oqnidbs nq tq
 
 function toBro(str){
 
-    const translate = (str) =>
-        str
+    const translate = (str1) =>
+        str1
             .split('')
-            .map(char => String.fromCharCode(char.charCodeAt(0) - 1))
+            .map(title1 =>
+                title1.charCodeAt(0) == 32 || title1.charCodeAt(0) == 43 ?
+                    title1 = ' ' : String.fromCharCode(title1.charCodeAt(0) - 1))
             .join('')
 
     output.innerText = translate(str)
