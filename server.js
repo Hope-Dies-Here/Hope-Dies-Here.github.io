@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/:id', (req, res) =>{
-    if (req.params.body === 'login.html'){
+    if (req.params === 'login.html'){
 
         res.sendStatus(404)
     }
