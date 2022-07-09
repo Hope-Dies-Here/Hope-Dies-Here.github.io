@@ -39,7 +39,7 @@ button.addEventListener('click', async () => {
 
     if(res.status) {
         console.log('Ur Logged in')
-        window.location = 'index.html'
+        window.location = 'login.html'
         
     } else{
         alert('wrong password')

@@ -39,7 +39,7 @@ app.post('/login', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'login', 'log.html'))
+    res.sendFile(path.join(__dirname, 'login', 'index.html'))
     console.log(req.params)
 })
 
