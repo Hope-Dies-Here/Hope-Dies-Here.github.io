@@ -43,6 +43,8 @@ app.get('*', (req, res) => {
     console.log(req.params)
 })
 
-
+app.get('/login.html', (req, res) =>{
+    res.send('Login First')
+})
 
 app.listen(process.env.PORT || 8008)
