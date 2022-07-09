@@ -44,7 +44,7 @@ app.get('/index.html', (req, res) => {
 })
 
 app.get('/login.html', (req, res) =>{
-    res.send('Login First')
+    res.sendStatus(404)
 })
 
 app.listen(process.env.PORT || 8008)
