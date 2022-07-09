@@ -16,7 +16,7 @@ function logIn(req, res, next){
     if(auth) {
         next()
     } else {
-        console.log('err')
+        res.sendStatus(404)
     }
 }
 
@@ -43,8 +43,11 @@ app.get('/', (req, res) => {
     console.log(req.params)
 })
 
-app.get('/login.html', (req, res) =>{
-    res.sendStatus(404)
+app.get('/:id', (req, res) =>{
+    if (req.params.body === 'login.html'){
+
+        res.sendStatus(404)
+    }
 })
 
 app.listen(process.env.PORT || 8008)
