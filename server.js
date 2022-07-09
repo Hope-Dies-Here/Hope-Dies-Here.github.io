@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 const app = Express()
 
-app.use(Express.static(path.join(__dirname, 'server')))
+app.use(Express.static(path.join(__dirname, 'login')))
 app.use(Express.json())
 // app.use(logIn)
 
@@ -24,7 +24,7 @@ app.post('/login', (req, res) => {
     console.log(req.body.password)
 
     if(req.body.password === 'sarah' && req.body.username === 'sarah123') {
-        res.sendFile(__dirname, './server/next.html')
+        // res.sendFile(__dirname, './login/next.html')
         res.json({
             username: req.body.username,
             password: req.body.password,
@@ -39,10 +39,10 @@ app.post('/login', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'server', 'index.html'))
+    res.sendFile(path.join(__dirname, 'login', 'log.html'))
     console.log(req.params)
 })
 
 
 
-app.listen(3000, () => console.log('working'))
+app.listen(process.env.PORT || 8008)
