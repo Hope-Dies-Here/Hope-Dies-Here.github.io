@@ -38,7 +38,7 @@ app.post('/login', (req, res) => {
     console.log(req.body)
 })
 
-app.get('/index.html', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'login', 'index.html'))
     console.log(req.params)
 })
