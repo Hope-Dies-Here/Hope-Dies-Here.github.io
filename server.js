@@ -20,9 +20,8 @@ app.post('/login', (req, res) => {
         // res.send('user not found')
         res.sendFile(path.join(__dirname, 'server/next copy.html'))
     } else if(check.name === username && check.password === password) {
-        console.log(check)
         res.redirect('/goo');
-        some = true
+        some = false
         res.end()
     } else {
         res.sendFile('next copy.html')
