@@ -39,3 +39,10 @@ body{
     cursor: pointer;
     transform: scale(1.1);
 }
+
+@media (max-width: 768px) {
+    body{
+        zoom: 100%;
+        background-color: red;
+    }
+}
