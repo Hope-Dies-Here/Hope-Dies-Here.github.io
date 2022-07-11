@@ -1,53 +1,41 @@
-import Express from "express";
-import path from "path";
-import { fileURLToPath } from 'url';
+const express = require('express');
+const { copyFile } = require('fs');
+const path = require('path');
+const { users } = require('./data')
+const app = express();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const app = Express()
-
-app.use(Express.static(path.join(__dirname, 'login')))
-app.use(Express.json())
-// app.use(logIn)
-
-let auth
-function logIn(req, res, next){
-    if(auth) {
-        next()
-    } else {
-        res.sendStatus(404)
-    }
-}
-
-app.post('/login', (req, res) => {
-    console.log(req.body.password)
-
-    if(req.body.password === 'sarah' && req.body.username === 'sarah123') {
-        // res.sendFile(__dirname, './login/next.html')
-        res.json({
-            username: req.body.username,
-            password: req.body.password,
-            status: true
-        })
-    } else {
-        res.json({ status: false})
-        console.log('err')
-    }
-
-    console.log(req.body)
-})
+app.use(express.static(path.join(__dirname, 'server')))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'login', 'index.html'))
-    console.log(req.params)
+    res.sendFile(path.join(__dirname, '/server/index.html'));
 })
+let some = false
 
-app.get('/:id', (req, res) =>{
-    if (req.params === 'login.html'){
+app.post('/login', (req, res) => {
+    const { username, password } = req.body
+    const check = users.find(user => user.name === username)
+    if(check === undefined) {
+        // res.send('user not found')
+        res.sendFile(path.join(__dirname, 'server/next copy.html'))
+    } else if(check.name === username && check.password === password) {
+        console.log(check)
+        res.redirect('/goo');
+        some = true
+        res.end()
+    } else {
+        res.sendFile('next copy.html')
+    }
+});
 
-        res.sendStatus(404)
+app.get('/goo', (req, res) => {
+    if(some){
+
+        res.sendFile(path.join(__dirname, 'server/login.html'));
+    } else {
+        res.send(`login first <a href= 'index.html'> Here </a>`)
     }
 })
 
-app.listen(process.env.PORT || 8008)
+app.listen(3000, () => console.log('yeeeeeet....'))

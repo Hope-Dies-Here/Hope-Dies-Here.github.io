@@ -6,7 +6,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: fit-content;
+    min-height: 100vh;
     transform: translateY(3em);
 }
 
