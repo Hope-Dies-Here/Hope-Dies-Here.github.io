@@ -25,7 +25,7 @@ app.post('/login', (req, res) => {
         some = true
         res.end()
     } else {
-        res.sendFile('next copy.html')
+        res.sendFile('server/next copy.html')
     }
 });
 
