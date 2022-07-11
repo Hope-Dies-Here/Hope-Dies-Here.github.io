@@ -17,6 +17,12 @@ body{
     width: fit-content;
     margin-top: 30px;
 }
+.form input{
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 3px;
+    background-color: none;
+}
 
 .form button{
     padding: 5px 15px;
