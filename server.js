@@ -18,7 +18,7 @@ app.post('/login', (req, res) => {
     const check = users.find(user => user.name === username)
     if(check === undefined) {
         // res.send('user not found')
-        res.sendFile(path.join(__dirname, 'server/next copy.html'))
+        res.sendFile(path.join(__dirname, './server/next copy.html'))
     } else if(check.name === username && check.password === password) {
         res.redirect('/goo');
         some = false
