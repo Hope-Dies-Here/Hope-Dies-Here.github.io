@@ -1,7 +1,7 @@
 const express = require('express');
 const { copyFile } = require('fs');
 const path = require('path');
-const { users } = require('./data.js')
+const { users } = require('./data')
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'server')))
