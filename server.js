@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './server/index.html'));
 })
+
 let some = false
 
 app.post('/login', (req, res) => {
@@ -21,7 +22,7 @@ app.post('/login', (req, res) => {
         res.sendFile(path.join(__dirname, 'server/next copy.html'))
     } else if(check.name === username && check.password === password) {
         res.redirect('/goo');
-        some = false
+        some = true
         res.end()
     } else {
         res.sendFile('next copy.html')
@@ -31,7 +32,7 @@ app.post('/login', (req, res) => {
 app.get('/goo', (req, res) => {
     if(some){
 
-        res.sendFile(path.join(__dirname, 'server/login.html'));
+        res.sendFile(path.join(__dirname, './server/login.html'));
     } else {
         res.send(`login first <a href= 'index.html'> Here </a>`)
     }
