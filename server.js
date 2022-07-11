@@ -17,7 +17,9 @@ let some = false
 app.post('/login', (req, res) => {
     const { username, password } = req.body
     const check = users.find(user => user.name === username)
-    if(check === undefined) {
+    const checkP = users.find(user => user.name === password)
+
+    if(check === undefined || checkP === undefined) {
         // res.send('user not found')
         res.sendFile(path.join(__dirname, 'server/next copy.html'))
     } else if(check.name === username && check.password === password) {
@@ -28,6 +30,8 @@ app.post('/login', (req, res) => {
         res.sendFile('server/next copy.html')
     }
 });
+
+
 
 app.get('/goo', (req, res) => {
     if(some){
