@@ -2,8 +2,7 @@
   "name": "node",
   "version": "1.0.0",
   "description": "just studying",
-  "main": "server.js",
-  "type": "module",
+  "main": "jef.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
