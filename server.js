@@ -1,7 +1,7 @@
 const express = require('express');
 const { copyFile } = require('fs');
 const path = require('path');
-const { users } = require('./data')
+const { users } = require('./data.js')
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'server')))
@@ -9,7 +9,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/server/index.html'));
+    res.sendFile(path.join(__dirname, './server/index.html'));
 })
 let some = false
 
