@@ -19,7 +19,7 @@ body{
 }
 .form input{
     padding: 5px;
-    border: 1px solid white;
+    border: none;
     border-radius: 3px;
     background-color: none;
 }
@@ -28,7 +28,7 @@ body{
     padding: 5px 15px;
     border: white 1px solid;
     border-radius: 3px;
-    
+    color: white;
     background-color: inherit;
     transition: .5s;
 }
