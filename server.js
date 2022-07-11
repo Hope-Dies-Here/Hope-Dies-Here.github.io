@@ -38,4 +38,4 @@ app.get('/goo', (req, res) => {
     }
 })
 
-app.listen(3000, () => console.log('yeeeeeet....'))
+app.listen(process.env.PORT  || 3000)
