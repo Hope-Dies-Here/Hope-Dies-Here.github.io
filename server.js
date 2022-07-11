@@ -35,7 +35,7 @@ app.get('/goo', (req, res) => {
         res.sendFile(path.join(__dirname, './server/login.html'));
         some = false
     } else {
-        res.send(`login first <a href= 'index.html'> Here </a>`)
+        res.send(`login again <a href= 'index.html'> Here </a>`)
     }
 })
 
