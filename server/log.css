@@ -1,0 +1,33 @@
+
+body{
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: 0;
+    color: orange;
+}
+.form{
+    /* border: 1px red solid; */
+    box-shadow: 1px 5px 3px rgba(0, 0, 0, 2);
+    border-radius: 5px;
+    background-color: rgb(21, 35, 93);
+    padding: 60px;
+    display: grid;
+    place-items: center;
+    width: fit-content;
+    margin-top: 30px;
+}
+
+.form button{
+    padding: 5px 15px;
+    border: white 1px solid;
+    border-radius: 3px;
+    
+    background-color: inherit;
+    transition: .5s;
+}
+
+.form button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
