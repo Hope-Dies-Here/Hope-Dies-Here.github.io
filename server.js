@@ -3,11 +3,19 @@ const { copyFile } = require('fs');
 const path = require('path');
 const { users } = require('./data')
 const app = express();
+
 function folder(req, res, next) {
 
     app.use(express.static(path.join(__dirname, 'server')))
     next()
 }
+
+function secure(req, res, next) {
+
+    app.use(express.static(path.join(__dirname, 'server/actual')))
+    next()
+}
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
@@ -39,10 +47,10 @@ app.get('/index.html', folder, (req, res) => {
     res.send('dam u')
 })
 
-app.get('/goo', folder, (req, res) => {
+app.get('/goo', secure, (req, res) => {
     if(some){
 
-        res.sendFile(path.join(__dirname, './server/login.html'));
+        res.sendFile(path.join(__dirname, './server/actual/login.html'));
         some = false
     } else {
         res.send(`login again <a href= 'index.html'> Here </a>`)
