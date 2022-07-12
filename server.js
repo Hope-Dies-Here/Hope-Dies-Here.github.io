@@ -43,7 +43,7 @@ app.post('/login', folder, (req, res) => {
     }
 });
 
-app.get('/login.html', folder, (req, res) => {
+app.get('/actual/login.html', (req, res) => {
     res.send('dam u')
 })
 
