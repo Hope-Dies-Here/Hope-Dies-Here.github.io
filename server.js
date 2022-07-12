@@ -19,12 +19,8 @@ function secure(req, res, next) {
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/:id', folder, (req, res) => {
-    if(req.params['id'] == '/' || req.params['id'] == 'actual') {
-        res.sendStatus(404)
-    } else {
+app.get('/', folder, (req, res) => {
         res.sendFile(path.join(__dirname, './server/index.html'));
-    }
 })
 
 let some = false
@@ -59,8 +55,10 @@ app.get('/goo', secure, (req, res) => {
     }
 })
 
-// app.get('/', (req, res) => {
-//     res.sendStatus(404)
-// })
+app.get('/:id', (req, res) => {
+    if(req.params['id'] === '/' || req.params['id'] === 'actual') {
+        res.sendStatus(404)
+    } 
+})
 
 app.listen(process.env.PORT  || 3000)
