@@ -4,15 +4,19 @@ const path = require('path');
 const { users } = require('./data')
 const app = express();
 
+let prev = true
+
 function folder(req, res, next) {
 
     app.use(express.static(path.join(__dirname, 'server')))
+    prev = false
     next()
 }
 
 function secure(req, res, next) {
 
     app.use(express.static(path.join(__dirname, 'server/actual')))
+    prev = false
     next()
 }
 
@@ -55,11 +59,11 @@ app.get('/goo', secure, (req, res) => {
     }
 })
 
-// app.get('/:id', secure, (req, res) => {
+app.get('/', secure, (req, res) => {
 
-//     if(!some) {
-//         res.sendStatus(404)
-//     } 
-// })
+    if(prev) {
+        res.sendStatus(404)
+    } 
+})
 
 app.listen(process.env.PORT  || 3000)
