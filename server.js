@@ -56,7 +56,8 @@ app.get('/goo', secure, (req, res) => {
 })
 
 app.get('/:id', (req, res) => {
-    if(req.params['id'] === '/' || req.params['id'] === 'actual') {
+
+    if(!some) {
         res.sendStatus(404)
     } 
 })
