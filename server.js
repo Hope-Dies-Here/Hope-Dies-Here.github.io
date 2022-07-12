@@ -50,11 +50,12 @@ app.get('/goo', secure, (req, res) => {
         res.sendFile(path.join(__dirname, './server/actual/login.html'));
         some = false
     } else {
-        res.send(`login again <a href= 'index.html'> Here </a>`)
+        // res.send(`login again <a href= 'index.html'> Here </a>`)
+        res.redirect('/')
     }
 })
 
-app.get('*/:id', (req, res) => {
+app.get('/:id', (req, res) => {
     res.send('bruuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuh :|')
 })
 
