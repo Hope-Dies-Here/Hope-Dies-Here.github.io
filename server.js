@@ -32,8 +32,11 @@ app.post('/login', (req, res) => {
     }
 });
 
+app.get('/index.html', (req, res) => {
+    res.send('dam u')
+})
 
-app.get('*', (req, res) => {
+app.get('/goo', (req, res) => {
     if(some){
 
         res.sendFile(path.join(__dirname, './server/login.html'));
