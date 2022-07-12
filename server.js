@@ -3,18 +3,20 @@ const { copyFile } = require('fs');
 const path = require('path');
 const { users } = require('./data')
 const app = express();
+function folder(req, res, next) {
 
-// app.use(express.static(path.join(__dirname, 'server')))
+    app.use(express.static(path.join(__dirname, 'server')))
+}
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
+app.get('/', folder, (req, res) => {
     res.sendFile(path.join(__dirname, './server/index.html'));
 })
 
 let some = false
 
-app.post('/login', (req, res) => {
+app.post('/login', folder, (req, res) => {
     const { username, password } = req.body
     const check = users.find(user => user.name === username)
     const checkP = users.find(user => user.password === password)
@@ -32,11 +34,11 @@ app.post('/login', (req, res) => {
     }
 });
 
-app.get('/index.html', (req, res) => {
+app.get('/index.html', folder, (req, res) => {
     res.send('dam u')
 })
 
-app.get('/goo', (req, res) => {
+app.get('/goo', folder, (req, res) => {
     if(some){
 
         res.sendFile(path.join(__dirname, './server/login.html'));
