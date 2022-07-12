@@ -55,7 +55,7 @@ app.get('/goo', secure, (req, res) => {
     }
 })
 
-app.get('*/:id', (req, res) => {
+app.get('*', (req, res) => {
     res.send('bruuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuh :|')
 })
 
