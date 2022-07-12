@@ -43,18 +43,19 @@ app.post('/login', folder, (req, res) => {
     }
 });
 
-app.get('/actual/login.html', (req, res) => {
-    res.status(401)
-})
 
 app.get('/goo', secure, (req, res) => {
     if(some){
-
+        
         res.sendFile(path.join(__dirname, './server/actual/login.html'));
         some = false
     } else {
         res.send(`login again <a href= 'index.html'> Here </a>`)
     }
+})
+
+app.get('/:id', (req, res) => {
+    res.send('bruuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuh :|')
 })
 
 app.listen(process.env.PORT  || 3000)
