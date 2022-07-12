@@ -44,7 +44,7 @@ app.post('/login', folder, (req, res) => {
 });
 
 app.get('/actual/login.html', (req, res) => {
-    res.send('dam u')
+    res.status(401)
 })
 
 app.get('/goo', secure, (req, res) => {
