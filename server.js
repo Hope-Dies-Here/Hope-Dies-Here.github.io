@@ -55,11 +55,11 @@ app.get('/goo', secure, (req, res) => {
     }
 })
 
-app.get('/:id', (req, res) => {
+// app.get('/:id', secure, (req, res) => {
 
-    if(!some) {
-        res.sendStatus(404)
-    } 
-})
+//     if(!some) {
+//         res.sendStatus(404)
+//     } 
+// })
 
 app.listen(process.env.PORT  || 3000)
