@@ -4,7 +4,7 @@ const path = require('path');
 const { users } = require('./data')
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'server')))
+// app.use(express.static(path.join(__dirname, 'server')))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
