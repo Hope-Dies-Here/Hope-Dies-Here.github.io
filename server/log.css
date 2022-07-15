@@ -70,6 +70,6 @@ body{
 @media (max-width: 768px) {
     body{
         zoom: 100%;
-        background-color: red;
+        background-color: inherit;
     }
 }

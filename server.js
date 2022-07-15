@@ -59,11 +59,10 @@ app.get('/goo', secure, (req, res) => {
     }
 })
 
-app.get('/', secure, (req, res) => {
+app.get('/actual/login.html', secure, (req, res) => {
 
-    if(prev) {
         res.sendStatus(404)
-    } 
+
 })
 
 app.listen(process.env.PORT  || 3000)
