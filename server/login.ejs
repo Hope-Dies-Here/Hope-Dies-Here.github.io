@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./actual/style.css">
     <title>Document</title>
 </head>
     <body>
@@ -14,10 +14,11 @@
         </div> -->
         <div id="all" class="smth">
             <div id="top">
-                <h1>SUSY MAD BAKA</h1>
+                <h1>BAKA</h1>
+                <p> <%= name %></p>
             </div>
             <!-- <div id="mid"> -->
-                <textarea class="input" id="input" placeholder="Your word please..."></textarea>
+                <textarea class="input" id="input" name="text" placeholder="Your word please..."></textarea>
                 <!-- <p></p> -->
                 <!-- <span style="color: white; border-bottom: 1px solid gray; 
                     margin:auto;">Input Language</span>
@@ -37,17 +38,17 @@
                     <option value="Bro" id="bro">To Bro</option>
                 </select>
                 <button onclick="translateIt()" id="translate-btn">Translate</button> 
-            </div>
-            <div id="bottom">
-                <h1>Translation</h1>
-                <div class="output" id="output"> 
-                    <p id="txt"></p>
+                <div id="bottom">
+                    <h1>Translation</h1>
+                    <div class="output" id="output"> 
+                        <p id="txt"></p>
+                    </div>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
         <div class="guide-container">
             <ul class="guid-list">
-                <h3>This is Manual</h3>
+                <h3>This is Manual-</h3>
                 <li>
                     You Know The Rules So Do I 
                 </li>
@@ -57,8 +58,9 @@
                 </li>
             </ul>
         </div>
-
-        <!-- <p>https://github.com/Hope-Dies-Here/Hope-Dies-Here.github.io/tree/main/pr</p> -->
-    <script src="practice.js"></script>
+        <form action="/logout" method="post">
+            <input type="submit" value="Log out">
+        </form>
+    <script src="./actual/practice.js"></script>
 </body>
 </html>
