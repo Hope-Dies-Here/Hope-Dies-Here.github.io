@@ -22,7 +22,7 @@ router.use(bodyParser.urlencoded({ extended: false}))
 router.use(express.json())
 
 router.use(session({
-    secret: 'sarah',
+    secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: true,
 }))
@@ -44,7 +44,7 @@ const errHandle = (err, req, res, next) => {
     ------------ setup databse ------------
 */
 let db
-connectToDb('heroku', (err) => {
+connectToDb(process.env.DB_NAME, (err) => {
     if(!err){
         const port = 3000
         router.listen(process.env.PORT  || 3000, () => console.log(`testing ${port}...`))
@@ -73,7 +73,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
-    const result = await db.collection('users').findOne({username: req.body.username})
+    const result = await db.collection(process.env.COL_NAME).findOne({username: req.body.username, password: req.body.password})
     if(result){
         req.session.data = null
         req.session.auth = result.name

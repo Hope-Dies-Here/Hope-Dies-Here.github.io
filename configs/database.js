@@ -1,13 +1,12 @@
 import { MongoClient } from 'mongodb'
 import 'dotenv/config'
 
-const uri = 'mongodb://localhost:27017/heroku'
 let dbConnetion
 
 
 const connectToDb = async (dbName, cb) => {
     try {
-        const client = await MongoClient.connect(uri)
+        const client = await MongoClient.connect(process.env.MONGODB_STR)
         dbConnetion = client.db(dbName)
         console.log('db connected')
         return cb()
