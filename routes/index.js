@@ -102,9 +102,6 @@ router.post('/logout', (req, res) => {
     res.redirect('/')
 })
 
-// router.get('/*', (req, res) => {
-//         console.log(req.url)
-// })
 /*
     ------------ export stuffs ------------
 */
