@@ -1,5 +1,6 @@
 import bodyParser from 'body-parser';
 import 'dotenv/config'
+import MongoConnet from 'connect-mongo'
 import express from 'express'
 import session from 'express-session';
 import { getDb, connectToDb } from '../configs/database.js'
@@ -25,9 +26,10 @@ router.use(session({
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: true,
+    store: MongoConnet.create({ mongoUrl: process.env.MONGODB_STR }),
+    cookie: { maxAge: 1000 * 60 * 60 * 24 }
 }))
 
-console.log(process.env)
 /*
 ------------ middleware ------------
 */
@@ -59,7 +61,7 @@ const c = (data) => {
 }
 
 router.get('/', (req, res) => {
-    console.log(req.session.auth)
+
     if(req.session.auth){
  
         res.redirect('/home')
@@ -83,7 +85,6 @@ router.post('/login', async (req, res) => {
         req.session.data = string
         res.redirect('/')
     }
-    console.log(req.session.data)
 })
 
 router.get('/home', (req, res) => {
