@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        .block{
+            border: 1px solid red;
+            width: 260px;
+            padding: 30px;
+        }
+        .ip{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* border: 1px solid purple; */
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <form action="/index" method="post" class="block">
+        <div class="ip">
+            <label>Username </label>
+            <input type="text" name="username" class="input"> 
+
+        </div>
+        <div class="ip">
+            <label>Password </label>
+            <input type="text" name="Password" class="input">
+            
+        </div>
+        <div class="ip">
+            <input type="submit">
+        </div>
+    </form>
+</body>
+</html>

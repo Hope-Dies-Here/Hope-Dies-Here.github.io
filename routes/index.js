@@ -4,6 +4,7 @@ import MongoConnet from 'connect-mongo'
 import express from 'express'
 import session from 'express-session';
 import { getDb, connectToDb } from '../configs/database.js'
+import limitter from 'express-rate-limit'
 
 import path from 'path';
 import {fileURLToPath} from 'url';
@@ -13,10 +14,17 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const router = express()
+const limitLogin = limitter({
+    windowMs: 1000 * 10,
+    max: 5,
+    // message: 
+})
 
 router.set('view engine', 'ejs')
 router.set('views', path.join(__dirname, '../server'))
 router.use(express.static('server'))
+router.use(express.static('server/port'))
+
 
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: false}))
@@ -48,8 +56,8 @@ const errHandle = (err, req, res, next) => {
 let db
 connectToDb(process.env.DB_NAME, (err) => {
     if(!err){
-        const port = 3000
-        router.listen(process.env.PORT  || 3000, () => console.log(`testing ${port}...`))
+        const port = 5000
+        router.listen(process.env.PORT  || 5000, () => console.log(`testing ${port}...`))
     }
     db = getDb()
 })
@@ -74,7 +82,7 @@ router.get('/', (req, res) => {
     }
 })
 
-router.post('/login', async (req, res) => {
+router.post('/login', limitLogin,async (req, res) => {
     const result = await db.collection(process.env.COL_NAME).findOne({username: req.body.username, password: req.body.password})
     if(result){
         req.session.data = null
@@ -89,10 +97,18 @@ router.post('/login', async (req, res) => {
 
 router.get('/home', (req, res) => {
     if(req.session.auth){
-        res.render('login', {name: req.session.auth})
+        res.render('eEhome-page', {name: req.session.auth})
 
     } else {
-        res.send(`<a href ='/'> login </a>`)
+        res.send(`<a href ='/'> <h1> login </h1> </a>`)
+    }
+})
+router.get('/projects', (req, res) => {
+    if(req.session.auth){
+        res.render('eEprojects-page', {name: req.session.auth})
+
+    } else {
+        res.send(`<a href ='/'> <h1> login </h1> </a>`)
     }
 })
 
